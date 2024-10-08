@@ -1,21 +1,20 @@
-# mandatory, user should supply
+# this is mandatory user should apply
 variable "ami_id" {
-  type        = string
-  #default     = "ami-09c813fb71547fc4f"
+    type = string
+    default = "ami-09c813fb71547fc4f"
+    
 }
-
-# Optional, default value is t3.micro. User can always override
-# t3.micro, t3.medium, t3.small
 variable "instance_type" {
-    default = "t3.micro"
-    type        = string
-    validation {
-        condition     = contains(["t3.micro", "t3.medium", "t3.small"], var.instance_type)
-        error_message = "instance_type can only be one of t3.micro, t3.medium, t3.small"
-    } 
-}
+    
+     type        = string
+  description = "some test value"
 
-# mandatory, user should supply
+  validation {
+    condition     = contains(["t3.micro", "t3.small", "t3.medium"], var.instance_type)
+    error_message = "Valid values for var: test_variable are (t3.micro t3.small, t3.medium)"
+  } 
+}
 variable "security_group_ids" {
     type = list(string)
+    
 }
